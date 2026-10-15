@@ -18,37 +18,39 @@ trains the model on the *final answer only*. Passage and table reranking.
 
 ## 🤗 Models
 
-| Task | Base model | Std-SFT | Eklav |
-|---|---|---|---|
-| Passage reranking | Qwen3-0.6B | [Eklav-0.6B-Reranker-CotGen](https://huggingface.co/AdarshSingh7647/Eklav-0.6B-Reranker-CotGen) | [Eklav-0.6B-Reranker](https://huggingface.co/AdarshSingh7647/Eklav-0.6B-Reranker) |
-| | Qwen3-4B | [Eklav-4B-Reranker-CotGen](https://huggingface.co/AdarshSingh7647/Eklav-4B-Reranker-CotGen) | [Eklav-4B-Reranker](https://huggingface.co/AdarshSingh7647/Eklav-4B-Reranker) |
-| | Qwen2.5-7B | [Eklav-7B-Reranker-CotGen](https://huggingface.co/AdarshSingh7647/Eklav-7B-Reranker-CotGen) | – |
-| | Qwen3-8B | [Eklav-8B-Reranker-CotGen](https://huggingface.co/AdarshSingh7647/Eklav-8B-Reranker-CotGen) | [Eklav-8B-Reranker](https://huggingface.co/AdarshSingh7647/Eklav-8B-Reranker) |
-| | GLM-Z1-9B | [Eklav-9B-Reranker-CotGen](https://huggingface.co/AdarshSingh7647/Eklav-9B-Reranker-CotGen) | [Eklav-9B-Reranker](https://huggingface.co/AdarshSingh7647/Eklav-9B-Reranker) |
-| | Qwen3-14B | [Eklav-14B-Reranker-CotGen](https://huggingface.co/AdarshSingh7647/Eklav-14B-Reranker-CotGen) | [Eklav-14B-Reranker](https://huggingface.co/AdarshSingh7647/Eklav-14B-Reranker) |
-| Table reranking | Qwen3-8B | [TabRankStandardSFT](https://huggingface.co/AdarshSingh7647/TabRankStandardSFT) | [TabRank](https://huggingface.co/AdarshSingh7647/TabRank) |
+**Passage reranking**
 
-`eklav models` prints this list; `eklav download --task passage_reranking --method eklav --size 8b` fetches one.
+| | Qwen3-0.6B | Qwen3-4B | Qwen2.5-7B | Qwen3-8B | GLM-Z1-9B | Qwen3-14B |
+|---|---|---|---|---|---|---|
+| Std-SFT | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-0.6B-Reranker-CotGen) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-4B-Reranker-CotGen) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-7B-Reranker-CotGen) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-8B-Reranker-CotGen) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-9B-Reranker-CotGen) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-14B-Reranker-CotGen) |
+| Eklav | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-0.6B-Reranker) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-4B-Reranker) | – | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-8B-Reranker) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-9B-Reranker) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-14B-Reranker) |
+
+**Table reranking**
+
+| | Qwen3-8B |
+|---|---|
+| Std-SFT | [🤗](https://huggingface.co/AdarshSingh7647/TabRankStandardSFT) |
+| Eklav | [🤗](https://huggingface.co/AdarshSingh7647/TabRank) |
+
+`eklav models` lists them; `eklav download --task passage_reranking --method eklav --size 8b` fetches one.
 
 ## Results
 
-nDCG@10, one evaluation run per cell. Per-domain scores and generations are in [results/](results/README.md).
+nDCG@10, one evaluation run per cell. Details: [results/](results/README.md).
 
-| BRIGHT (12-domain avg) | Std-SFT | Eklav |
-|---|---|---|
-| Qwen3-8B | 31.5 | 34.2 |
-| GLM-Z1-9B | – | 33.2 |
-| Qwen3-14B | 32.5 | 34.7 |
+**Passage reranking, BRIGHT (12-domain average)**
 
-| Table reranking (Qwen3-8B) | Std-SFT | Eklav |
-|---|---|---|
-| aitqa | 88.2 | 86.0 |
-| hybridqa | 75.2 | 79.2 |
-| nq | 74.7 | 72.2 |
-| sqa | 72.0 | 73.8 |
-| tabfact | 66.6 | 68.9 |
-| tatqa | 52.0 | 54.6 |
-| wtq | 62.0 | 65.0 |
+| | Qwen3-8B | GLM-Z1-9B | Qwen3-14B |
+|---|---|---|---|
+| Std-SFT | 31.5 | – | 32.5 |
+| Eklav | 34.2 | 33.2 | 34.7 |
+
+**Table reranking, Qwen3-8B**
+
+| | aitqa | hybridqa | nq | sqa | tabfact | tatqa | wtq |
+|---|---|---|---|---|---|---|---|
+| Std-SFT | 88.2 | 75.2 | 74.7 | 72.0 | 66.6 | 52.0 | 62.0 |
+| Eklav | 86.0 | 79.2 | 72.2 | 73.8 | 68.9 | 54.6 | 65.0 |
 
 ## Reproduce
 
