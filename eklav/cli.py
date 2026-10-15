@@ -57,12 +57,11 @@ def data_main(argv: List[str]) -> int:
 
 def download_main(argv: List[str]) -> int:
     from eklav import models
-    from eklav.methods import EKLAV, STD_SFT
     from eklav.tasks import TASKS
 
     ap = argparse.ArgumentParser(prog="eklav download", description="Download a released checkpoint.")
     ap.add_argument("--task", required=True, choices=sorted(TASKS))
-    ap.add_argument("--method", default=models.DEFAULT_METHOD, choices=(EKLAV, STD_SFT))
+    ap.add_argument("--method", default=models.DEFAULT_METHOD, choices=models.RELEASED_METHODS)
     ap.add_argument("--size", default=models.DEFAULT_SIZE, help="e.g. 0.6b, 4b, 8b, 14b (see `eklav models`).")
     ap.add_argument("--local_dir", default=None, help="Default: the Hugging Face cache.")
     args = ap.parse_args(argv)

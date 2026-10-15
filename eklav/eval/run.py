@@ -28,7 +28,6 @@ from typing import Dict, List, Optional
 from eklav import models
 from eklav.eval import benchmarks
 from eklav.eval.model import ModelArgs
-from eklav.methods import EKLAV, STD_SFT
 
 TASK_EVALUATORS = ("passage_reranking", "table_reranking")
 
@@ -66,7 +65,7 @@ def build_parser() -> argparse.ArgumentParser:
     ap.add_argument("--model", "--model_path", dest="model_path",
                     help="Local path or Hub id of a merged model, or of the base model when --lora_path is given. "
                          "Default: the released checkpoint chosen by --method / --size.")
-    ap.add_argument("--method", choices=(EKLAV, STD_SFT), default=models.DEFAULT_METHOD,
+    ap.add_argument("--method", choices=models.RELEASED_METHODS, default=models.DEFAULT_METHOD,
                     help="Which released checkpoint to use when --model is not given.")
     ap.add_argument("--size", default=models.DEFAULT_SIZE, help="Released checkpoint size (see `eklav models`).")
     ap.add_argument("--lora_path", default=None)

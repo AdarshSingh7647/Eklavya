@@ -20,7 +20,7 @@ def test_unknown_checkpoint_lists_available_sizes():
 def test_models_command_lists_checkpoints(capsys):
     assert cli.main(["models"]) == 0
     out = capsys.readouterr().out
-    assert "AdarshSingh7647/Eklav-8B-Reranker" in out and "TabRankStandardSFT" in out
+    assert "AdarshSingh7647/Eklav-8B-Reranker" in out and "TabRankStandardSFT" in out and "TabRankNaive" in out
 
 
 def test_eval_defaults_to_the_released_checkpoint(monkeypatch, tmp_path):

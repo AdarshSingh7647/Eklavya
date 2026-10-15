@@ -10,7 +10,7 @@ checkpoint chosen by --task / --method / --size, which vLLM downloads on first u
 
 from typing import Dict, List, NamedTuple, Optional
 
-from eklav.methods import EKLAV, STD_SFT
+from eklav.methods import EKLAV, NAIVE_SFT, STD_SFT
 
 HF_USER = "AdarshSingh7647"
 DEFAULT_METHOD = EKLAV
@@ -43,7 +43,9 @@ CHECKPOINTS: List[Checkpoint] = (
                {size: f"Eklav-{size.upper()}-Reranker-CotGen" for size in ("0.6b", "4b", "7b", "8b", "9b", "14b")})
     + _entries("table_reranking", EKLAV, {"8b": "Qwen/Qwen3-8B"}, {"8b": "TabRank"})
     + _entries("table_reranking", STD_SFT, {"8b": "Qwen/Qwen3-8B"}, {"8b": "TabRankStandardSFT"})
+    + _entries("table_reranking", NAIVE_SFT, {"8b": "Qwen/Qwen3-8B"}, {"8b": "TabRankNaive"})
 )
+RELEASED_METHODS = tuple(dict.fromkeys(c.method for c in CHECKPOINTS))
 
 
 def find_checkpoint(task: str, method: str, size: str) -> Checkpoint:
