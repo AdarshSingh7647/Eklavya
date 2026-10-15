@@ -37,8 +37,6 @@ trains the model on the *final answer only*. Passage and table reranking.
 
 ## Results: nDCG@10
 
-Details: [results/](results/README.md).
-
 **Passage reranking, BRIGHT (12-domain average)**
 
 | | Qwen3-4B | Qwen3-8B | GLM-Z1-9B | Qwen3-14B |
@@ -60,7 +58,7 @@ Details: [results/](results/README.md).
 Install with `pip install -e ".[train,eval]"`. Then train any task with either method
 (`std-sft` or `eklav`) on any base model, using the task's raw corpus (the
 [Rank1 training set](https://huggingface.co/datasets/jhu-clsp/rank1-training-data) for passage reranking, a teacher-trace
-`sft_examples.json` for tables); the sequences, the answer-only loss mask and the hyperparameters are handled for you:
+`sft_examples.json` for tables):
 
 ```bash
 eklav train --task passage_reranking --method eklav --base_model Qwen/Qwen3-8B \
@@ -73,5 +71,3 @@ benchmark (`--benchmark local:<dir>` or `hf:<repo>`):
 ```bash
 eklav eval --task passage_reranking --benchmark bright --method eklav --size 8b
 ```
-
-`eklav <command> --help` lists every option.

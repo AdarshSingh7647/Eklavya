@@ -1,7 +1,5 @@
 # Results
 
-Evaluation outputs for **Std-SFT** and **Eklav**.
-
 ```
 results/
 ├── passage_reranking/
@@ -30,8 +28,6 @@ with lzma.open("results/passage_reranking/qwen3-8b/eklav/bright/run1/rankings/bi
 with lzma.open("results/table_reranking/qwen3-8b/eklav/nq/predictions.json.xz", "rt") as f:
     predictions = json.load(f)            # query id -> question, raw_output, ranked_ids, parse_failed, ...
 ```
-
-From a shell: `xzcat <file>.xz | head`.
 
 ## Passage reranking: BRIGHT, nDCG@10
 
