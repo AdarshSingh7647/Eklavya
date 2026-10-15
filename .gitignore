@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+# Locally built training data and run outputs.
+/data/
+/runs/
+*.log
+.env
