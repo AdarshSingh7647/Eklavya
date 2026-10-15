@@ -2,8 +2,6 @@
 
 # Eklav
 
-**Supervise the answer, not the reasoning.**
-
 Eklav puts a teacher's reasoning trace in the *input* of a training sequence and
 trains the model on the *final answer only*. Passage and table reranking.
 
@@ -34,26 +32,23 @@ trains the model on the *final answer only*. Passage and table reranking.
 
 ## Results
 
-nDCG@10, one evaluation run per cell (best of each pair in bold). Per-domain scores, repeat runs and all
-generations are in [results/](results/README.md).
+nDCG@10, one evaluation run per cell. Per-domain scores and generations are in [results/](results/README.md).
 
 | BRIGHT (12-domain avg) | Std-SFT | Eklav |
 |---|---|---|
-| Qwen3-0.6B | **16.1** | 14.4 |
-| Qwen3-4B | 29.1 | **29.9** |
-| Qwen3-8B | 31.5 | **34.2** |
+| Qwen3-8B | 31.5 | 34.2 |
 | GLM-Z1-9B | – | 33.2 |
-| Qwen3-14B | 32.5 | **34.7** |
+| Qwen3-14B | 32.5 | 34.7 |
 
 | Table reranking (Qwen3-8B) | Std-SFT | Eklav |
 |---|---|---|
-| aitqa | **88.2** | 86.0 |
-| hybridqa | 75.2 | **79.2** |
-| nq | **74.7** | 72.2 |
-| sqa | 72.0 | **73.8** |
-| tabfact | 66.6 | **68.9** |
-| tatqa | 52.0 | **54.6** |
-| wtq | 62.0 | **65.0** |
+| aitqa | 88.2 | 86.0 |
+| hybridqa | 75.2 | 79.2 |
+| nq | 74.7 | 72.2 |
+| sqa | 72.0 | 73.8 |
+| tabfact | 66.6 | 68.9 |
+| tatqa | 52.0 | 54.6 |
+| wtq | 62.0 | 65.0 |
 
 ## Reproduce
 

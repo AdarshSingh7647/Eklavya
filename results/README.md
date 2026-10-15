@@ -1,7 +1,6 @@
 # Results
 
-Every number in the main [README](../README.md) comes from the files here. Only the two
-methods compared in the paper, **Std-SFT** and **Eklav**, are included.
+Evaluation outputs for **Std-SFT** and **Eklav**.
 
 ```
 results/
@@ -19,10 +18,7 @@ results/
         └── predictions.json.xz          per query: candidates, generated reasoning, final ranking
 ```
 
-`<model>` is the base model (`qwen3-0.6b`, `qwen3-4b`, `qwen3-8b`, `qwen3-14b`, `glm-z1-9b`,
-`qwen2.5-7b`). `<method>` is `std-sft` or `eklav`. `<run>`: `run1` is the run reported in
-the main README; `run2` is a second evaluation run of the same model, except Qwen3-0.6B Eklav, where
-`run2` was trained with a learning rate of 5e-5 instead of 1e-4.
+`<model>` is the base model (`qwen3-8b`, `qwen3-14b`, `glm-z1-9b`, `qwen2.5-7b`). `<method>` is `std-sft` or `eklav`. `<run>`: `run1` and `run2` are two evaluation runs of the same model.
 
 ## Reading the files
 
@@ -48,10 +44,6 @@ TQ-Q / TQ-T = theoremqa_questions / theoremqa_theorems.
 
 | Model | Method | Avg | Bio | Earth | Econ | Psy | Rob | Stack | Sus | Leet | Pony | AoPS | TQ-Q | TQ-T |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| qwen3-0.6b | std-sft | 16.1 | 26.0 | 17.0 | 13.3 | 24.4 | 13.6 | 18.4 | 17.7 | 12.9 | 13.8 | 3.9 | 15.1 | 16.6 |
-| qwen3-0.6b | eklav | 14.4 | 9.6 | 12.1 | 11.6 | 20.8 | 11.6 | 18.9 | 13.9 | 13.9 | 16.9 | 2.4 | 17.6 | 23.7 |
-| qwen3-4b | std-sft | 29.1 | 44.5 | 45.5 | 24.4 | 33.9 | 21.0 | 28.8 | 30.3 | 14.7 | 33.9 | 8.9 | 24.7 | 38.8 |
-| qwen3-4b | eklav | 29.9 | 41.6 | 45.0 | 27.3 | 36.6 | 26.1 | 31.1 | 32.9 | 22.3 | 27.3 | 6.0 | 27.7 | 35.4 |
 | qwen3-8b | std-sft | 31.5 | 45.5 | 43.1 | 29.3 | 35.8 | 24.2 | 30.5 | 34.9 | 21.6 | 33.4 | 9.7 | 27.1 | 43.4 |
 | qwen3-8b | eklav | 34.2 | 50.0 | 49.2 | 30.9 | 42.4 | 27.9 | 32.4 | 35.6 | 25.7 | 37.5 | 9.7 | 28.5 | 41.0 |
 | glm-z1-9b | eklav | 33.2 | 48.5 | 45.3 | 30.4 | 40.1 | 23.6 | 32.7 | 36.6 | 24.9 | 36.1 | 7.7 | 28.8 | 43.6 |
