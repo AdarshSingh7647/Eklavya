@@ -38,12 +38,12 @@ _PASSAGE_BASES = {"0.6b": "Qwen/Qwen3-0.6B", "4b": "Qwen/Qwen3-4B", "8b": "Qwen/
 
 CHECKPOINTS: List[Checkpoint] = (
     _entries("passage_reranking", EKLAV, _PASSAGE_BASES,
-             {size: f"Eklav-{size.upper()}-Reranker" for size in ("0.6b", "4b", "8b", "9b", "14b")})
+             {size: f"Eklav-Passage-{size.upper()}" for size in ("0.6b", "4b", "8b", "9b", "14b")})
     + _entries("passage_reranking", STD_SFT, _PASSAGE_BASES,
-               {size: f"Eklav-{size.upper()}-Reranker-StdSFT" for size in ("0.6b", "4b", "8b", "9b", "14b")})
-    + _entries("table_reranking", EKLAV, {"8b": "Qwen/Qwen3-8B"}, {"8b": "TabRank"})
-    + _entries("table_reranking", STD_SFT, {"8b": "Qwen/Qwen3-8B"}, {"8b": "TabRankStdSFT"})
-    + _entries("table_reranking", NAIVE_SFT, {"8b": "Qwen/Qwen3-8B"}, {"8b": "TabRankNaiveSFT"})
+               {size: f"Std-SFT-Passage-{size.upper()}" for size in ("0.6b", "4b", "8b", "9b", "14b")})
+    + _entries("table_reranking", EKLAV, {"8b": "Qwen/Qwen3-8B"}, {"8b": "Eklav-Table-8B"})
+    + _entries("table_reranking", STD_SFT, {"8b": "Qwen/Qwen3-8B"}, {"8b": "Std-SFT-Table-8B"})
+    + _entries("table_reranking", NAIVE_SFT, {"8b": "Qwen/Qwen3-8B"}, {"8b": "Naive-SFT-Table-8B"})
 )
 RELEASED_METHODS = tuple(dict.fromkeys(c.method for c in CHECKPOINTS))
 

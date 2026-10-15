@@ -22,16 +22,16 @@ trains the model on the *final answer only*. Passage and table reranking.
 
 | | Qwen3-0.6B | Qwen3-4B | Qwen3-8B | GLM-Z1-9B | Qwen3-14B |
 |---|---|---|---|---|---|
-| Std-SFT | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-0.6B-Reranker-StdSFT) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-4B-Reranker-StdSFT) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-8B-Reranker-StdSFT) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-9B-Reranker-StdSFT) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-14B-Reranker-StdSFT) |
-| Eklav | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-0.6B-Reranker) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-4B-Reranker) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-8B-Reranker) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-9B-Reranker) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-14B-Reranker) |
+| Std-SFT | [🤗](https://huggingface.co/AdarshSingh7647/Std-SFT-Passage-0.6B) | [🤗](https://huggingface.co/AdarshSingh7647/Std-SFT-Passage-4B) | [🤗](https://huggingface.co/AdarshSingh7647/Std-SFT-Passage-8B) | [🤗](https://huggingface.co/AdarshSingh7647/Std-SFT-Passage-9B) | [🤗](https://huggingface.co/AdarshSingh7647/Std-SFT-Passage-14B) |
+| Eklav | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-Passage-0.6B) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-Passage-4B) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-Passage-8B) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-Passage-9B) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-Passage-14B) |
 
 **Table reranking**
 
 | | Qwen3-8B |
 |---|---|
-| Naive-SFT | [🤗](https://huggingface.co/AdarshSingh7647/TabRankNaiveSFT) |
-| Std-SFT | [🤗](https://huggingface.co/AdarshSingh7647/TabRankStdSFT) |
-| Eklav | [🤗](https://huggingface.co/AdarshSingh7647/TabRank) |
+| Naive-SFT | [🤗](https://huggingface.co/AdarshSingh7647/Naive-SFT-Table-8B) |
+| Std-SFT | [🤗](https://huggingface.co/AdarshSingh7647/Std-SFT-Table-8B) |
+| Eklav | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-Table-8B) |
 
 `eklav models` lists them; `eklav download --task passage_reranking --method eklav --size 8b` fetches one.
 
