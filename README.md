@@ -53,7 +53,7 @@ Details: [results/](results/README.md).
 | Std-SFT | **88.2** | **74.7** | 72.0 | 66.6 | 52.0 |
 | Eklav | 86.0 | 72.2 | **73.8** | **68.9** | **54.6** |
 
-## Reproduce
+## Quickstart
 
 Install with `pip install -e ".[train,eval]"`. Then train any task with either method
 (`std-sft` or `eklav`) on any base model, using the task's raw corpus (the
