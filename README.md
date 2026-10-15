@@ -22,15 +22,15 @@ trains the model on the *final answer only*. Passage and table reranking.
 
 | | Qwen3-0.6B | Qwen3-4B | Qwen3-8B | GLM-Z1-9B | Qwen3-14B |
 |---|---|---|---|---|---|
-| Std-SFT | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-0.6B-Reranker-CotGen) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-4B-Reranker-CotGen) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-8B-Reranker-CotGen) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-9B-Reranker-CotGen) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-14B-Reranker-CotGen) |
+| Std-SFT | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-0.6B-Reranker-StdSFT) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-4B-Reranker-StdSFT) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-8B-Reranker-StdSFT) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-9B-Reranker-StdSFT) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-14B-Reranker-StdSFT) |
 | Eklav | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-0.6B-Reranker) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-4B-Reranker) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-8B-Reranker) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-9B-Reranker) | [🤗](https://huggingface.co/AdarshSingh7647/Eklav-14B-Reranker) |
 
 **Table reranking**
 
 | | Qwen3-8B |
 |---|---|
-| Naive-SFT | [🤗](https://huggingface.co/AdarshSingh7647/TabRankNaive) |
-| Std-SFT | [🤗](https://huggingface.co/AdarshSingh7647/TabRankStandardSFT) |
+| Naive-SFT | [🤗](https://huggingface.co/AdarshSingh7647/TabRankNaiveSFT) |
+| Std-SFT | [🤗](https://huggingface.co/AdarshSingh7647/TabRankStdSFT) |
 | Eklav | [🤗](https://huggingface.co/AdarshSingh7647/TabRank) |
 
 `eklav models` lists them; `eklav download --task passage_reranking --method eklav --size 8b` fetches one.
@@ -41,17 +41,17 @@ Details: [results/](results/README.md).
 
 **Passage reranking, BRIGHT (12-domain average)**
 
-| | Qwen3-8B | GLM-Z1-9B | Qwen3-14B |
-|---|---|---|---|
-| Std-SFT | 31.5 | – | 32.5 |
-| Eklav | 34.2 | 33.2 | 34.7 |
+| | Qwen3-4B | Qwen3-8B | GLM-Z1-9B | Qwen3-14B |
+|---|---|---|---|---|
+| Std-SFT | 29.3 | 31.5 | 30.1 | 32.5 |
+| Eklav | **31.5** | **34.2** | **33.2** | **34.7** |
 
 **Table reranking, Qwen3-8B**
 
 | | aitqa | hybridqa | nq | sqa | tabfact | tatqa | wtq |
 |---|---|---|---|---|---|---|---|
-| Std-SFT | 88.2 | 75.2 | 74.7 | 72.0 | 66.6 | 52.0 | 62.0 |
-| Eklav | 86.0 | 79.2 | 72.2 | 73.8 | 68.9 | 54.6 | 65.0 |
+| Std-SFT | **88.2** | 75.2 | **74.7** | 72.0 | 66.6 | 52.0 | 62.0 |
+| Eklav | 86.0 | **79.2** | 72.2 | **73.8** | **68.9** | **54.6** | **65.0** |
 
 ## Reproduce
 

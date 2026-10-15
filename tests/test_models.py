@@ -20,7 +20,7 @@ def test_unknown_checkpoint_lists_available_sizes():
 def test_models_command_lists_checkpoints(capsys):
     assert cli.main(["models"]) == 0
     out = capsys.readouterr().out
-    assert "AdarshSingh7647/Eklav-8B-Reranker" in out and "TabRankStandardSFT" in out and "TabRankNaive" in out
+    assert "AdarshSingh7647/Eklav-8B-Reranker" in out and "TabRankStdSFT" in out and "TabRankNaiveSFT" in out
 
 
 def test_eval_defaults_to_the_released_checkpoint(monkeypatch, tmp_path):
@@ -37,8 +37,8 @@ def test_eval_defaults_to_the_released_checkpoint(monkeypatch, tmp_path):
     monkeypatch.chdir(tmp_path)
     with pytest.raises(Stop):
         run.main(["--task", "passage_reranking", "--benchmark", "bright", "--method", "std-sft", "--size", "4b"])
-    assert seen == {"task": "passage_reranking", "model": "AdarshSingh7647/Eklav-4B-Reranker-CotGen"}
-    assert (tmp_path / "results/passage_reranking/Eklav-4B-Reranker-CotGen/bright").is_dir()
+    assert seen == {"task": "passage_reranking", "model": "AdarshSingh7647/Eklav-4B-Reranker-StdSFT"}
+    assert (tmp_path / "results/passage_reranking/Eklav-4B-Reranker-StdSFT/bright").is_dir()
 
 
 def test_eval_rejects_adapter_without_base_model():
