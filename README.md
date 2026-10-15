@@ -48,10 +48,10 @@ Details: [results/](results/README.md).
 
 **Table reranking, Qwen3-8B**
 
-| | aitqa | hybridqa | nq | sqa | tabfact | tatqa | wtq |
-|---|---|---|---|---|---|---|---|
-| Std-SFT | **88.2** | 75.2 | **74.7** | 72.0 | 66.6 | 52.0 | 62.0 |
-| Eklav | 86.0 | **79.2** | 72.2 | **73.8** | **68.9** | **54.6** | **65.0** |
+| | aitqa | nq | sqa | tabfact | tatqa |
+|---|---|---|---|---|---|
+| Std-SFT | **88.2** | **74.7** | 72.0 | 66.6 | 52.0 |
+| Eklav | 86.0 | 72.2 | **73.8** | **68.9** | **54.6** |
 
 ## Reproduce
 

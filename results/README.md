@@ -6,11 +6,9 @@ Evaluation outputs for **Std-SFT** and **Eklav**.
 results/
 ├── passage_reranking/
 │   ├── summary.csv                      one row per run: model, method, run, avg and per-domain nDCG@10
-│   ├── <model>/<method>/bright/<run>/
-│   │   ├── metrics.json                 all metrics, per domain, plus checkpoint and notes
-│   │   └── rankings/<domain>.jsonl.xz   per query: the candidates with score and relevance label
-│   └── reasoning_examples/<method>/<domain>.jsonl
-│                                        sampled judgments with the model's generated reasoning
+│   └── <model>/<method>/bright/<run>/
+│       ├── metrics.json                 all metrics, per domain, plus checkpoint and notes
+│       └── rankings/<domain>.jsonl.xz   per query: the candidates with score and relevance label
 └── table_reranking/
     ├── summary.csv                      one row per method and dataset
     └── qwen3-8b/<method>/<dataset>/
@@ -18,7 +16,7 @@ results/
         └── predictions.json.xz          per query: candidates, generated reasoning, final ranking
 ```
 
-`<model>` is the base model (`qwen3-8b`, `qwen3-14b`, `glm-z1-9b`, `qwen2.5-7b`). `<method>` is `std-sft` or `eklav`. `<run>`: `run1` and `run2` are two evaluation runs of the same model.
+`<model>` is the base model (`qwen3-8b`, `qwen3-14b`, `glm-z1-9b`). `<method>` is `std-sft` or `eklav`. `<run>`: `run1` and `run2` are two evaluation runs of the same model.
 
 ## Reading the files
 
@@ -35,42 +33,35 @@ with lzma.open("results/table_reranking/qwen3-8b/eklav/nq/predictions.json.xz", 
 
 From a shell: `xzcat <file>.xz | head`.
 
-## Passage reranking: BRIGHT, nDCG@10 (run1)
+## Passage reranking: BRIGHT, nDCG@10
 
-Pointwise reranking of the BM25 top-100 candidates released with Rank1. Domains:
-Bio = biology, Earth = earth_science, Econ = economics, Psy = psychology, Rob = robotics,
-Stack = stackoverflow, Sus = sustainable_living, Leet = leetcode, AoPS = aops,
+Pointwise reranking of the BM25 top-100 candidates released with Rank1. Each row is the mean over
+its runs. Domains: Bio = biology, Earth = earth_science, Econ = economics, Psy = psychology,
+Rob = robotics, Stack = stackoverflow, Sus = sustainable_living, Leet = leetcode, AoPS = aops,
 TQ-Q / TQ-T = theoremqa_questions / theoremqa_theorems.
 
-| Model | Method | Avg | Bio | Earth | Econ | Psy | Rob | Stack | Sus | Leet | Pony | AoPS | TQ-Q | TQ-T |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| qwen3-8b | std-sft | 31.5 | 45.5 | 43.1 | 29.3 | 35.8 | 24.2 | 30.5 | 34.9 | 21.6 | 33.4 | 9.7 | 27.1 | 43.4 |
-| qwen3-8b | eklav | 34.2 | 50.0 | 49.2 | 30.9 | 42.4 | 27.9 | 32.4 | 35.6 | 25.7 | 37.5 | 9.7 | 28.5 | 41.0 |
-| glm-z1-9b | eklav | 33.2 | 48.5 | 45.3 | 30.4 | 40.1 | 23.6 | 32.7 | 36.6 | 24.9 | 36.1 | 7.7 | 28.8 | 43.6 |
-| qwen3-14b | std-sft | 32.5 | 46.6 | 43.6 | 31.7 | 42.1 | 26.1 | 31.5 | 35.6 | 19.4 | 37.1 | 9.2 | 25.7 | 41.3 |
-| qwen3-14b | eklav | 34.7 | 50.6 | 50.0 | 32.7 | 42.4 | 27.4 | 33.7 | 35.5 | 24.7 | 36.1 | 9.7 | 28.3 | 44.7 |
-| qwen2.5-7b | std-sft | 26.1 | 43.6 | 33.7 | 24.2 | 37.3 | 19.8 | 24.0 | 31.5 | 14.4 | 22.0 | 4.4 | 18.7 | 39.0 |
-
-The training step of each run is recorded in its `metrics.json` (`null` where the original export did not record it).
+| Model | Method | Runs | Avg | Bio | Earth | Econ | Psy | Rob | Stack | Sus | Leet | Pony | AoPS | TQ-Q | TQ-T |
+|---|---|---|---|---|---|
+| qwen3-8b | std-sft | 2 | 31.5 | 45.2 | 43.1 | 29.3 | 35.8 | 24.2 | 30.5 | 34.9 | 21.6 | 33.4 | **9.7** | 27.0 | 43.4 |
+| qwen3-8b | eklav | 2 | 34.2 | 50.0 | 49.2 | 30.9 | **42.4** | **27.9** | 32.4 | 35.6 | **25.7** | **37.6** | **9.7** | 28.5 | 41.0 |
+| glm-z1-9b | eklav | 2 | 33.2 | 48.5 | 45.3 | 30.4 | 40.1 | 23.6 | 32.7 | **36.6** | 24.9 | 36.1 | 7.8 | **28.8** | 43.6 |
+| qwen3-14b | std-sft | 1 | 32.5 | 46.6 | 43.6 | 31.7 | 42.1 | 26.1 | 31.5 | 35.6 | 19.4 | 37.1 | 9.2 | 25.7 | 41.3 |
+| qwen3-14b | eklav | 1 | **34.7** | **50.6** | **50.0** | **32.7** | **42.4** | 27.4 | **33.7** | 35.5 | 24.7 | 36.1 | **9.7** | 28.3 | **44.7** |
 
 ## Table reranking: Qwen3-8B (Eklav checkpoint-300, Std-SFT checkpoint-160)
 
 Listwise reranking with a sliding window. Full metrics (nDCG, accuracy, recall, precision,
 parse failures, thinking tokens) are in [table_reranking/summary.csv](table_reranking/summary.csv).
 
-| Dataset | Queries | Method | nDCG@10 | acc@1 | Parse failures | Avg thinking tokens |
-|---|---|---|---|---|---|---|
-| aitqa | 515 | std-sft | 88.2 | 19.2 | 12 | 1660 |
-| aitqa | 515 | eklav | 86.0 | 19.8 | 13 | 1418 |
-| hybridqa | 6106 | std-sft | 75.2 | 20.9 | 325 | 3605 |
-| hybridqa | 6106 | eklav | 79.2 | 21.7 | 7 | 1990 |
-| nq | 966 | std-sft | 74.7 | 57.7 | 27 | 2404 |
-| nq | 966 | eklav | 72.2 | 56.3 | 22 | 1362 |
-| sqa | 148 | std-sft | 72.0 | 16.9 | 0 | 3318 |
-| sqa | 148 | eklav | 73.8 | 14.2 | 0 | 2145 |
-| tabfact | 15106 | std-sft | 66.6 | 0.0 | 583 | 3716 |
-| tabfact | 15106 | eklav | 68.9 | 0.0 | 45 | 2454 |
-| tatqa | 362 | std-sft | 52.0 | 14.1 | 23 | 3704 |
-| tatqa | 362 | eklav | 54.6 | 14.4 | 0 | 2473 |
-| wtq | 2425 | std-sft | 62.0 | 27.5 | 171 | 3171 |
-| wtq | 2425 | eklav | 65.0 | 28.1 | 84 | 2192 |
+| Dataset | Queries | Method | nDCG@10 | Parse failures | Avg thinking tokens |
+|---|---|---|---|---|---|
+| aitqa | 515 | std-sft | **88.2** | 12 | 1660 |
+| aitqa | 515 | eklav | 86.0 | 13 | 1418 |
+| nq | 966 | std-sft | **74.7** | 27 | 2404 |
+| nq | 966 | eklav | 72.2 | 22 | 1362 |
+| sqa | 148 | std-sft | 72.0 | 0 | 3318 |
+| sqa | 148 | eklav | **73.8** | 0 | 2145 |
+| tabfact | 15106 | std-sft | 66.6 | 583 | 3716 |
+| tabfact | 15106 | eklav | **68.9** | 45 | 2454 |
+| tatqa | 362 | std-sft | 52.0 | 23 | 3704 |
+| tatqa | 362 | eklav | **54.6** | 0 | 2473 |

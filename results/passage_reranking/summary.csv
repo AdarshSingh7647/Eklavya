@@ -1,7 +1,6 @@
 model,method,run,benchmark,avg_ndcg@10,ndcg@10_biology,ndcg@10_earth_science,ndcg@10_economics,ndcg@10_psychology,ndcg@10_robotics,ndcg@10_stackoverflow,ndcg@10_sustainable_living,ndcg@10_leetcode,ndcg@10_pony,ndcg@10_aops,ndcg@10_theoremqa_questions,ndcg@10_theoremqa_theorems
 glm-z1-9b,eklav,run1,bright,33.2,48.5,45.3,30.4,40.1,23.6,32.7,36.6,24.9,36.1,7.7,28.8,43.6
 glm-z1-9b,eklav,run2,bright,33.2,48.5,45.3,30.4,40.1,23.6,32.7,36.6,24.9,36.1,7.8,28.9,43.6
-qwen2.5-7b,std-sft,run1,bright,26.1,43.6,33.7,24.2,37.3,19.8,24.0,31.5,14.4,22.0,4.4,18.7,39.0
 qwen3-14b,eklav,run1,bright,34.7,50.6,50.0,32.7,42.4,27.4,33.7,35.5,24.7,36.1,9.7,28.3,44.7
 qwen3-14b,std-sft,run1,bright,32.5,46.6,43.6,31.7,42.1,26.1,31.5,35.6,19.4,37.1,9.2,25.7,41.3
 qwen3-8b,eklav,run1,bright,34.2,50.0,49.2,30.9,42.4,27.9,32.4,35.6,25.7,37.5,9.7,28.5,41.0
